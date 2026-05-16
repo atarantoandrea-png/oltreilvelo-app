@@ -10,84 +10,23 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="Oltre il Velo">
   <link rel="apple-touch-icon" href="icon-512.png">
+  <script>
+    if (window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches) {
+      window.location.href = "https://www.elisasoulmedium.com/school/course/oltreilvelo/lecture/8195421";
+    }
+  </script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       font-family: 'Mulish', Arial, sans-serif;
       background: #ffffff;
       color: #1a1a2e;
-      overflow: hidden;
-      height: 100vh;
-      height: 100dvh;
-    }
-
-    /* === APP MODE === */
-    .app-container {
-      display: none;
-      flex-direction: column;
-      height: 100vh;
-      height: 100dvh;
-    }
-
-    .app-container.active { display: flex; }
-
-    .app-frame {
-      flex: 1;
-      border: none;
-      width: 100%;
-    }
-
-    .nav-bar {
+      min-height: 100vh;
       display: flex;
-      justify-content: space-around;
-      align-items: center;
-      background: linear-gradient(135deg, #4a2d7a, #7b4fa2, #c77dba);
-      padding: 8px 0;
-      padding-bottom: calc(8px + env(safe-area-inset-bottom));
-      box-shadow: 0 -4px 20px rgba(74, 45, 122, 0.2);
-      flex-shrink: 0;
-    }
-
-    .nav-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-decoration: none;
-      color: rgba(255,255,255,0.7);
-      font-size: 10px;
-      font-weight: 600;
-      padding: 4px 8px;
-      border-radius: 8px;
-      transition: all 0.2s;
-      cursor: pointer;
-      border: none;
-      background: none;
-    }
-
-    .nav-item.active, .nav-item:hover {
-      color: #ffffff;
-      background: rgba(255,255,255,0.15);
-    }
-
-    .nav-icon {
-      width: 24px;
-      height: 24px;
-      margin-bottom: 3px;
-    }
-
-    /* === INSTALL PAGE === */
-    .install-page {
-      display: none;
       flex-direction: column;
       align-items: center;
       padding: 40px 20px;
-      min-height: 100vh;
-      overflow-y: auto;
     }
-
-    .install-page.active { display: flex; }
-
     .logo {
       width: 120px;
       height: 120px;
@@ -95,21 +34,18 @@
       object-fit: contain;
       margin-bottom: 20px;
     }
-
-    .install-page h1 {
+    h1 {
       font-size: 24px;
       margin-bottom: 8px;
       text-align: center;
       color: #1a1a2e;
     }
-
     .subtitle {
       font-size: 14px;
       color: #666;
       margin-bottom: 32px;
       text-align: center;
     }
-
     .install-btn {
       background: linear-gradient(135deg, #4a2d7a, #7b4fa2);
       color: white;
@@ -124,7 +60,6 @@
       width: 100%;
       max-width: 320px;
     }
-
     .instructions {
       background: #f8f7fc;
       border-radius: 16px;
@@ -133,13 +68,11 @@
       width: 100%;
       margin-bottom: 20px;
     }
-
     .instructions h2 {
       font-size: 18px;
       margin-bottom: 16px;
       color: #4a2d7a;
     }
-
     .step {
       display: flex;
       align-items: flex-start;
@@ -147,7 +80,6 @@
       font-size: 15px;
       line-height: 1.5;
     }
-
     .step-num {
       background: linear-gradient(135deg, #4a2d7a, #7b4fa2);
       color: white;
@@ -162,9 +94,7 @@
       margin-right: 12px;
       flex-shrink: 0;
     }
-
     .android-instructions, .iphone-instructions { display: none; }
-
     .enter-btn {
       background: linear-gradient(135deg, #4a2d7a, #7b4fa2);
       color: white;
@@ -179,7 +109,6 @@
       width: 100%;
       max-width: 320px;
     }
-
     .divider {
       width: 100%;
       max-width: 380px;
@@ -191,141 +120,55 @@
   </style>
 </head>
 <body>
+  <img src="icon-512.png" alt="Oltre il Velo" class="logo">
+  <h1>Oltre il Velo Community</h1>
+  <p class="subtitle">di Elisa Soul Medium</p>
 
-  <!-- APP MODE: iframe + nav bar -->
-  <div class="app-container" id="appContainer">
-    <iframe class="app-frame" id="appFrame" src="https://www.elisasoulmedium.com/school/course/oltreilvelo/lecture/8195421"></iframe>
-    <nav class="nav-bar">
+  <button class="install-btn" id="installBtn">Installa App</button>
 
-      <button class="nav-item active" onclick="navigateTo(this, 'https://www.elisasoulmedium.com/school/course/oltreilvelo/lecture/8195421')">
-        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-          <polyline points="9 22 9 12 15 12 15 22"/>
-        </svg>
-        Home
-      </button>
-
-      <button class="nav-item" onclick="navigateTo(this, 'https://www.elisasoulmedium.com/school/course/oltreilvelo/lecture/8196012')">
-        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polygon points="23 7 16 12 23 17 23 7"/>
-          <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
-        </svg>
-        Registro
-      </button>
-
-      <button class="nav-item" onclick="navigateTo(this, 'https://www.elisasoulmedium.com/school/course/oltreilvelo/lecture/9190294')">
-        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-        </svg>
-        Biblioteca
-      </button>
-
-      <button class="nav-item" onclick="navigateTo(this, 'https://www.elisasoulmedium.com/school/course/livezoom2/lecture/8244172')">
-        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"/>
-          <circle cx="12" cy="12" r="3" fill="currentColor"/>
-          <line x1="12" y1="2" x2="12" y2="5"/>
-          <line x1="12" y1="19" x2="12" y2="22"/>
-          <line x1="2" y1="12" x2="5" y2="12"/>
-          <line x1="19" y1="12" x2="22" y2="12"/>
-        </svg>
-        Live
-      </button>
-
-      <button class="nav-item" onclick="navigateTo(this, 'https://www.elisasoulmedium.com/cammino-interiore')">
-        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"/>
-          <path d="M16.24 7.76a6 6 0 0 1 0 8.49"/>
-          <path d="M12 2v4"/>
-          <path d="M12 18v4"/>
-          <path d="M4.93 4.93l2.83 2.83"/>
-          <path d="M16.24 16.24l2.83 2.83"/>
-        </svg>
-        Cammino
-      </button>
-
-    </nav>
+  <div class="instructions android-instructions" id="androidInstructions">
+    <h2>Installa su Android</h2>
+    <div class="step">
+      <span class="step-num">1</span>
+      <span>Tocca il pulsante <strong>"Installa App"</strong> qui sopra</span>
+    </div>
+    <div class="step">
+      <span class="step-num">2</span>
+      <span>Conferma toccando <strong>"Installa"</strong></span>
+    </div>
+    <div class="step">
+      <span class="step-num">3</span>
+      <span>Troverai l'icona sulla schermata Home</span>
+    </div>
   </div>
 
-  <!-- INSTALL PAGE -->
-  <div class="install-page" id="installPage">
-    <img src="icon-512.png" alt="Oltre il Velo" class="logo">
-    <h1>Oltre il Velo Community</h1>
-    <p class="subtitle">di Elisa Soul Medium</p>
-
-    <button class="install-btn" id="installBtn">Installa App</button>
-
-    <div class="instructions android-instructions" id="androidInstructions">
-      <h2>Installa su Android</h2>
-      <div class="step">
-        <span class="step-num">1</span>
-        <span>Tocca il pulsante <strong>"Installa App"</strong> qui sopra</span>
-      </div>
-      <div class="step">
-        <span class="step-num">2</span>
-        <span>Conferma toccando <strong>"Installa"</strong></span>
-      </div>
-      <div class="step">
-        <span class="step-num">3</span>
-        <span>Troverai l'icona sulla schermata Home</span>
-      </div>
+  <div class="instructions iphone-instructions" id="iphoneInstructions">
+    <h2>Installa su iPhone / iPad</h2>
+    <div class="step">
+      <span class="step-num">1</span>
+      <span>Assicurati di essere su <strong>Safari</strong></span>
     </div>
-
-    <div class="instructions iphone-instructions" id="iphoneInstructions">
-      <h2>Installa su iPhone / iPad</h2>
-      <div class="step">
-        <span class="step-num">1</span>
-        <span>Assicurati di essere su <strong>Safari</strong> (non Chrome o altri browser)</span>
-      </div>
-      <div class="step">
-        <span class="step-num">2</span>
-        <span>Tocca l'icona <strong>Condividi</strong> in basso (il quadrato con la freccia verso l'alto)</span>
-      </div>
-      <div class="step">
-        <span class="step-num">3</span>
-        <span>Scorri e tocca <strong>"Aggiungi alla schermata Home"</strong></span>
-      </div>
-      <div class="step">
-        <span class="step-num">4</span>
-        <span>Tocca <strong>"Aggiungi"</strong> in alto a destra</span>
-      </div>
+    <div class="step">
+      <span class="step-num">2</span>
+      <span>Tocca l'icona <strong>Condividi</strong> in basso (il quadrato con la freccia verso l'alto)</span>
     </div>
-
-    <div class="divider">oppure</div>
-
-    <a class="enter-btn" href="https://www.elisasoulmedium.com/school/course/oltreilvelo/lecture/8195421">
-      Entra nella Community
-    </a>
+    <div class="step">
+      <span class="step-num">3</span>
+      <span>Scorri e tocca <strong>"Aggiungi alla schermata Home"</strong></span>
+    </div>
+    <div class="step">
+      <span class="step-num">4</span>
+      <span>Tocca <strong>"Aggiungi"</strong> in alto a destra</span>
+    </div>
   </div>
+
+  <div class="divider">oppure</div>
+
+  <a class="enter-btn" href="https://www.elisasoulmedium.com/school/course/oltreilvelo/lecture/8195421">
+    Entra nella Community
+  </a>
 
   <script>
-    var isStandalone = (window.navigator.standalone === true) || window.matchMedia('(display-mode: standalone)').matches;
-
-    if (isStandalone) {
-      document.getElementById('appContainer').classList.add('active');
-    } else {
-      document.getElementById('installPage').classList.add('active');
-
-      var ua = navigator.userAgent.toLowerCase();
-      if (/iphone|ipad|ipod/.test(ua)) {
-        document.getElementById('iphoneInstructions').style.display = 'block';
-      } else if (/android/.test(ua)) {
-        document.getElementById('androidInstructions').style.display = 'block';
-      } else {
-        document.getElementById('iphoneInstructions').style.display = 'block';
-        document.getElementById('androidInstructions').style.display = 'block';
-      }
-    }
-
-    function navigateTo(btn, url) {
-      document.getElementById('appFrame').src = url;
-      document.querySelectorAll('.nav-item').forEach(function(item) {
-        item.classList.remove('active');
-      });
-      btn.classList.add('active');
-    }
-
     var deferredPrompt;
     var installBtn = document.getElementById('installBtn');
 
@@ -344,6 +187,16 @@
         });
       }
     });
+
+    var ua = navigator.userAgent.toLowerCase();
+    if (/iphone|ipad|ipod/.test(ua)) {
+      document.getElementById('iphoneInstructions').style.display = 'block';
+    } else if (/android/.test(ua)) {
+      document.getElementById('androidInstructions').style.display = 'block';
+    } else {
+      document.getElementById('iphoneInstructions').style.display = 'block';
+      document.getElementById('androidInstructions').style.display = 'block';
+    }
 
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('service-worker.js');
