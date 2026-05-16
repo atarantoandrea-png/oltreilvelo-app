@@ -1,0 +1,19 @@
+{
+  "name": "Oltre il Velo Community",
+  "short_name": "Oltre il Velo",
+  "description": "La community di Elisa Soul Medium",
+  "start_url": "https://www.elisasoulmedium.com/school/course/oltreilvelo/lecture/8195421",
+  "scope": "https://www.elisasoulmedium.com/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
