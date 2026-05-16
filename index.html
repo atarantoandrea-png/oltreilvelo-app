@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oltre il Velo Community</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="apple-touch-icon" href="icon-512.png">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Mulish', Arial, sans-serif;
+      background: #ffffff;
+      color: #1a1a2e;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+    .logo {
+      width: 120px;
+      height: 120px;
+      border-radius: 24px;
+      object-fit: contain;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 8px;
+      text-align: center;
+      color: #1a1a2e;
+    }
+    .subtitle {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+    .install-btn {
+      background: #4a2d7a;
+      color: white;
+      border: none;
+      padding: 16px 40px;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-bottom: 32px;
+      display: none;
+      width: 100%;
+      max-width: 320px;
+    }
+    .install-btn:hover { background: #5c3d8f; }
+    .instructions {
+      background: #f8f7fc;
+      border-radius: 16px;
+      padding: 24px;
+      max-width: 380px;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    .instructions h2 {
+      font-size: 18px;
+      margin-bottom: 16px;
+      color: #4a2d7a;
+    }
+    .step {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 14px;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    .step-num {
+      background: #4a2d7a;
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+    .android-instructions, .iphone-instructions { display: none; }
+    .enter-btn {
+      background: #4a2d7a;
+      color: white;
+      text-decoration: none;
+      padding: 14px 40px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 700;
+      display: inline-block;
+      margin-top: 16px;
+      text-align: center;
+      width: 100%;
+      max-width: 320px;
+    }
+    .divider {
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+      color: #999;
+      font-size: 13px;
+      margin: 8px 0 16px;
+    }
+  </style>
+</head>
+<body>
+  <img src="icon-512.png" alt="Oltre il Velo" class="logo">
+  <h1>Oltre il Velo Community</h1>
+  <p class="subtitle">di Elisa Soul Medium</p>
+
+  <button class="install-btn" id="installBtn">Installa App</button>
+
+  <div class="instructions android-instructions" id="androidInstructions">
+    <h2>Installa su Android</h2>
+    <div class="step">
+      <span class="step-num">1</span>
+      <span>Tocca il pulsante <strong>"Installa App"</strong> qui sopra</span>
+    </div>
+    <div class="step">
+      <span class="step-num">2</span>
+      <span>Conferma toccando <strong>"Installa"</strong></span>
+    </div>
+    <div class="step">
+      <span class="step-num">3</span>
+      <span>Troverai l'icona sulla schermata Home</span>
+    </div>
+  </div>
+
+  <div class="instructions iphone-instructions" id="iphoneInstructions">
+    <h2>Installa su iPhone / iPad</h2>
+    <div class="step">
+      <span class="step-num">1</span>
+      <span>Tocca l'icona <strong>Condividi</strong> in basso (il quadrato con la freccia verso l'alto)</span>
+    </div>
+    <div class="step">
+      <span class="step-num">2</span>
+      <span>Scorri e tocca <strong>"Aggiungi alla schermata Home"</strong></span>
+    </div>
+    <div class="step">
+      <span class="step-num">3</span>
+      <span>Tocca <strong>"Aggiungi"</strong> in alto a destra</span>
+    </div>
+    <div class="step">
+      <span class="step-num">4</span>
+      <span>Troverai l'icona sulla schermata Home</span>
+    </div>
+  </div>
+
+  <div class="divider">oppure</div>
+
+  <a class="enter-btn" href="https://www.elisasoulmedium.com/school/course/oltreilvelo/lecture/8195421">
+    Entra nella Community
+  </a>
+
+  <script>
+    let deferredPrompt;
+    const installBtn = document.getElementById('installBtn');
+
+    window.addEventListener('beforeinstallprompt', function(e) {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBtn.style.display = 'block';
+    });
+
+    installBtn.addEventListener('click', function() {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(function(choiceResult) {
+          deferredPrompt = null;
+          installBtn.style.display = 'none';
+        });
+      }
+    });
+
+    var ua = navigator.userAgent.toLowerCase();
+    if (/iphone|ipad|ipod/.test(ua)) {
+      document.getElementById('iphoneInstructions').style.display = 'block';
+    } else if (/android/.test(ua)) {
+      document.getElementById('androidInstructions').style.display = 'block';
+    } else {
+      document.getElementById('iphoneInstructions').style.display = 'block';
+      document.getElementById('androidInstructions').style.display = 'block';
+    }
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
+</body>
+</html>
